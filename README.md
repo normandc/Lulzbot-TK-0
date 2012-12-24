@@ -1,11 +1,10 @@
 Lulzbot-TK-0
-<<<<<<< HEAD
 ============
 This repository hosts 3D CAD model files (parts and assembly) for the upcoming [Lulzbot TK-0 RepRap 3D printer](http://devel.lulzbot.com/TK-0/). The parts are remodeled from the original Sketchup files in [FreeCAD](http://free-cad.sourceforge.net/), an open source 3D CAD parametric modeler. FreeCAD .fcstd files are provided, as well as [STEP](http://en.wikipedia.org/wiki/ISO_10303), a universal exchange format that can be read by most commercial and open source 3D CAD applications.
 
 As with the original files, design files are under the GPLv3, documentation under CC-BY-SA. The design is not finalized, so these files will keep being updated.
 
-![The TK-0 Assembly in FreeCAD](TK-0_Assembly_thumb.png)
+![The TK-0 Assembly in FreeCAD](https://github.com/normandc/Lulzbot-TK-0/blob/master/TK-0_Assembly_thumb.png)
 
 **Notes**
 * Files are modeled in the latest development (unstable) version of FreeCAD - v0.13.1764 or later is required to display and edit these files. See the [FreeCAD wiki](https://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Download#Development_Versions) for details.
@@ -26,6 +25,3 @@ I have a very limited understanding of Python. Help and/or advice with the scrip
 
 **Acknowldegements**
 Thanks to wmayer, FreeCAD dev for the trick to set relative paths in the script!
-=======
-============
->>>>>>> 92232ac373861aeb0cf92884deb758f3771c9473
