@@ -1,4 +1,5 @@
 Lulzbot-TK-0
+<<<<<<< HEAD
 ============
 This repository hosts 3D CAD model files (parts and assembly) for the upcoming [Lulzbot TK-0 RepRap 3D printer](http://devel.lulzbot.com/TK-0/). The parts are remodeled from the original Sketchup files in [FreeCAD](http://free-cad.sourceforge.net/), an open source 3D CAD parametric modeler. FreeCAD .fcstd files are provided, as well as [STEP](http://en.wikipedia.org/wiki/ISO_10303), a universal exchange format that can be read by most commercial and open source 3D CAD applications.
 
@@ -25,3 +26,6 @@ I have a very limited understanding of Python. Help and/or advice with the scrip
 
 **Acknowldegements**
 Thanks to wmayer, FreeCAD dev for the trick to set relative paths in the script!
+=======
+============
+>>>>>>> 92232ac373861aeb0cf92884deb758f3771c9473
