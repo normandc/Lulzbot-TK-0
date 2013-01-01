@@ -4,7 +4,7 @@ This repository hosts 3D CAD model files (parts and assembly) for the upcoming [
 
 As with the original files, design files are under the GPLv3, documentation under CC-BY-SA. The design is not finalized, so these files will keep being updated.
 
-![The TK-0 Assembly in FreeCAD](https://github.com/normandc/Lulzbot-TK-0/blob/master/TK-0_Assembly_thumb.png)
+![The TK-0 Assembly in FreeCAD](http://ubuntuone.com/1UOJ9DcWS49wPAYhDXj8Qq)
 
 **Notes**
 * Files are modeled in the latest development (unstable) version of FreeCAD - v0.13.1764 or later is required to display and edit these files. See the [FreeCAD wiki](https://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Download#Development_Versions) for details.
@@ -21,7 +21,9 @@ As with the original files, design files are under the GPLv3, documentation unde
 * Many parts need updating, more parts are not modeled yet.
 
 **Afterword**
+
 I have a very limited understanding of Python. Help and/or advice with the script would be welcome.
 
 **Acknowldegements**
+
 Thanks to wmayer, FreeCAD dev for the trick to set relative paths in the script!
