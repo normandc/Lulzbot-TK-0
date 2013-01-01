@@ -101,6 +101,75 @@ App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocum
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor"))
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor001"))
 
+##### CREATE Y_FRAME #####
+
+# add right frontward extrusion
+Draft.move([FreeCAD.getDocument("TK0_Assembly").HFS5_2020x500mm],FreeCAD.Vector(0,0,0),copy=True)
+hf3 = App.getDocument("TK0_Assembly").HFS5_2020x500mm008
+hf3.Placement=App.Placement(App.Vector(90,-250,30),App.Rotation(0,0,0.707107,0.707107))
+
+# add left frontward extrusion
+Draft.move([FreeCAD.getDocument("TK0_Assembly").HFS5_2020x500mm],FreeCAD.Vector(0,0,0),copy=True)
+hf4 = App.getDocument("TK0_Assembly").HFS5_2020x500mm009
+hf4.Placement=App.Placement(App.Vector(-90,-250,30),App.Rotation(0,0,0.707107,0.707107))
+
+# add Y_Bearing
+Part.insert(os.path.join(path,"Y_Bearing-4mmoffset.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("Y_Bearing_4mmoffset").ShapeColor = (1.0000,0.0000,0.0000)
+yb = App.getDocument("TK0_Assembly").Y_Bearing_4mmoffset
+yb.Placement=App.Placement(App.Vector(0,-254,0),App.Rotation(0,0.707107,0.707107,0))
+
+# add Y_Motor
+Part.insert(os.path.join(path,"Y_Motor.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("Y_Motor").ShapeColor = (1.0000,0.0000,0.0000)
+ym = App.getDocument("TK0_Assembly").Y_Motor
+ym.Placement=App.Placement(App.Vector(0,254,0),App.Rotation(0.707107,0,0,0.707107))
+
+# add smooth rods
+Draft.move([FreeCAD.getDocument("TK0_Assembly").smooth_rod_10x500mm],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").smooth_rod_10x500mm002.Placement=App.Placement(App.Vector(75,-250,70),App.Rotation(-0.707107,0,0,0.707107))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").smooth_rod_10x500mm],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").smooth_rod_10x500mm003.Placement=App.Placement(App.Vector(-75,-250,70),App.Rotation(-0.707107,0,0,0.707107))
+
+# add NEMA-17 motor for Y-axis
+Draft.move([FreeCAD.getDocument("TK0_Assembly").NEMA_17_StepperMotor],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").NEMA_17_StepperMotor002.Placement=App.Placement(App.Vector(0,222.5,3.5),App.Rotation(0,0,0,1))
+
+# add Y_FrameConnectors
+Part.insert(os.path.join(path,"Y_FrameConnectorA.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("Y_FrameConnectorA").ShapeColor = (1.0000,0.0000,0.0000)
+yfa = App.getDocument("TK0_Assembly").Y_FrameConnectorA
+yfa.Placement=App.Placement(App.Vector(100,-75.1,20),App.Rotation(-0.707107,4.32964e-17,-0.707107,-4.32964e-17))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorA],FreeCAD.Vector(0,150.2,0),copy=True)
+
+Part.insert(os.path.join(path,"Y_FrameConnectorB.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("Y_FrameConnectorB").ShapeColor = (1.0000,0.0000,0.0000)
+yfb = App.getDocument("TK0_Assembly").Y_FrameConnectorB
+yfb.Placement=App.Placement(App.Vector(90,-75.1,40),App.Rotation(0,0,0,1))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorB],FreeCAD.Vector(0,150.2,0),copy=True)
+
+Draft.rotate([FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorA,FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorA001,FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorB,
+FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorB001],180.0,FreeCAD.Vector(0.0,0.0,0.0),axis=FreeCAD.Vector(0.0,0.0,1.0),copy=True)
+
+# create Y_Frame_Assy group to serve as sub-assembly and insert parts in the group
+App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","Y_Frame_Assy")
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("HFS5_2020x500mm008"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("HFS5_2020x500mm009"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_Bearing_4mmoffset"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_Motor"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("smooth_rod_10x500mm002"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("smooth_rod_10x500mm003"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor002"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorA"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorA001"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorB"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorB001"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorA002"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorA003"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorB002"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorB003"))
+
+##### FINISHING UP #####
 # recompute, set view
 App.activeDocument().recompute()
 on=Gui.activeDocument().activeView().isAnimationEnabled()

@@ -16,9 +16,9 @@ As with the original files, design files are under the GPLv3, documentation unde
 **TODO**
 * Find a way to batch convert *.fcstd files in the FCStd folder to .stp files in the STEP folder with a python script. This would make the TK-0_Assembly.py script a lot more useful. See [this forum topic](https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=3&t=3332)
 * In TK-0_Assembly.py:
-  * Add more parts to the assembly (for now only the outer frame is included)
+  * Add more parts to the assembly (for now only the Z and Y frames are included)
   * Batch import of STEP files would be nice, problem is to set their labels in the FreeCAD document to their original filenames. See [this forum topic](https://sourceforge.net/apps/phpbb/free-cad/viewtopic.php?f=3&t=3332)
-* Many parts need updating, more parts are not modeled yet.
+* Parts included are updated to the latest Sketchup files released (12/27/2012), more parts are not modeled yet.
 
 **Afterword**
 
