@@ -44,6 +44,19 @@ fc3.Placement=App.Placement(App.Vector(-270,-89.1,500),App.Rotation(0.707107,0,0
 fc4 = App.getDocument("TK0_Assembly").FrameConnectors003
 fc4.Placement=App.Placement(App.Vector(270,-85.1,500),App.Rotation(4.32964e-17,0.707107,-0.707107,-4.32964e-17))
 
+
+
+# recompute, set view
+App.activeDocument().recompute()
+on=Gui.activeDocument().activeView().isAnimationEnabled()
+Gui.activeDocument().activeView().setAnimationEnabled(False)
+Gui.activeDocument().activeView().setCameraType("Perspective")
+Gui.activeDocument().activeView().viewAxometric()
+Gui.activeDocument().activeView().fitAll()
+Gui.activeDocument().activeView().setAnimationEnabled(on)
+
+
+
 # copy the front frame to the rear
 Draft.rotate([FreeCAD.getDocument("TK0_Assembly").HFS5_2020x500mm,FreeCAD.getDocument("TK0_Assembly").HFS5_2020x500mm001,FreeCAD.getDocument("TK0_Assembly").HFS5_2020x500mm002,
 FreeCAD.getDocument("TK0_Assembly").HFS5_2020x500mm003,FreeCAD.getDocument("TK0_Assembly").FrameConnectors,FreeCAD.getDocument("TK0_Assembly").FrameConnectors001,
@@ -100,6 +113,18 @@ App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocum
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("smooth_rod_10x500mm001"))
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor"))
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor001"))
+
+
+
+# recompute, set view
+App.activeDocument().recompute()
+on=Gui.activeDocument().activeView().isAnimationEnabled()
+Gui.activeDocument().activeView().setAnimationEnabled(False)
+Gui.activeDocument().activeView().setCameraType("Perspective")
+Gui.activeDocument().activeView().viewAxometric()
+Gui.activeDocument().activeView().fitAll()
+Gui.activeDocument().activeView().setAnimationEnabled(on)
+
 
 ##### CREATE Y_FRAME #####
 
@@ -163,10 +188,10 @@ App.getDocument("TK0_Assembly").Bearing_Holder003.Placement=App.Placement(App.Ve
 
 # add linear bearings
 Part.insert(os.path.join(path,"LM10UU_LinearBearing.stp"),"TK0_Assembly")
-App.getDocument("TK0_Assembly").LM10UU_LinearBearing.Placement = App.Placement(App.Vector(75,-58,70),App.Rotation(0,0,0.707107,0.707107))
-Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,116,0),copy=True)
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing.Placement = App.Placement(App.Vector(75,-58.5,70),App.Rotation(0,0,0.707107,0.707107))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,117,0),copy=True)
 Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(-150,0,0),copy=True)
-Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(-150,116,0),copy=True)
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(-150,117,0),copy=True)
 
 # create Y_Frame_Assy group to serve as sub-assembly and insert parts in the group
 App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","Y_Frame_Assy")
@@ -194,6 +219,15 @@ App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocum
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing002"))
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing003"))
 
+# recompute, set view
+App.activeDocument().recompute()
+on=Gui.activeDocument().activeView().isAnimationEnabled()
+Gui.activeDocument().activeView().setAnimationEnabled(False)
+Gui.activeDocument().activeView().setCameraType("Perspective")
+Gui.activeDocument().activeView().viewAxometric()
+Gui.activeDocument().activeView().fitAll()
+Gui.activeDocument().activeView().setAnimationEnabled(on)
+
 ##### CREATE X_ASSY #####
 
 # add X_BearingForSpring
@@ -212,9 +246,9 @@ App.getDocument("TK0_Assembly").Bearing_Holder005.Placement=App.Placement(App.Ve
 
 # add linear bearings
 Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,0),copy=True)
-App.getDocument("TK0_Assembly").LM10UU_LinearBearing004.Placement=App.Placement(App.Vector(250,0,268),App.Rotation(0,0.707107,0,0.707107))
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing004.Placement=App.Placement(App.Vector(250,0,266.5),App.Rotation(0,0.707107,0,0.707107))
 Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,0),copy=True)
-App.getDocument("TK0_Assembly").LM10UU_LinearBearing005.Placement=App.Placement(App.Vector(250,0,191),App.Rotation(0,0.707107,0,0.707107))
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing005.Placement=App.Placement(App.Vector(250,0,189.5),App.Rotation(0,0.707107,0,0.707107))
 
 # add smooth rods
 Draft.move([FreeCAD.getDocument("TK0_Assembly").smooth_rod_10x500mm],FreeCAD.Vector(0,0,0),copy=True)
@@ -249,13 +283,13 @@ bh4.Placement=App.Placement(App.Vector(50,28,193.50),App.Rotation(-0.707107,-4.3
 # add linear bearings
 Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,-77),copy=True)
 lb2 = App.getDocument("TK0_Assembly").LM10UU_LinearBearing008
-lb2.Placement=App.Placement(App.Vector(33,40,263.5),App.Rotation(0,0,0,1))
+lb2.Placement=App.Placement(App.Vector(33.5,40,263.5),App.Rotation(0,0,0,1))
 Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,-77),copy=True)
-App.getDocument("TK0_Assembly").LM10UU_LinearBearing009.Placement=App.Placement(App.Vector(33,40,193.5),App.Rotation(0,0,0,1))
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing009.Placement=App.Placement(App.Vector(33.5,40,193.5),App.Rotation(0,0,0,1))
 Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,-77),copy=True)
-App.getDocument("TK0_Assembly").LM10UU_LinearBearing010.Placement=App.Placement(App.Vector(-33,40,263.5),App.Rotation(0,0,0,1))
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing010.Placement=App.Placement(App.Vector(-33.5,40,263.5),App.Rotation(0,0,0,1))
 Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,-77),copy=True)
-App.getDocument("TK0_Assembly").LM10UU_LinearBearing011.Placement=App.Placement(App.Vector(-33,40,193.5),App.Rotation(0,0,0,1))
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing011.Placement=App.Placement(App.Vector(-33.5,40,193.5),App.Rotation(0,0,0,1))
 
 # add NEMA-17 stepper motor
 Draft.move([FreeCAD.getDocument("TK0_Assembly").NEMA_17_StepperMotor],FreeCAD.Vector(-220.132,0,4),copy=True)
