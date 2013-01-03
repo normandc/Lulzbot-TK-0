@@ -151,6 +151,23 @@ Draft.move([FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorB],FreeCAD.Vecto
 Draft.rotate([FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorA,FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorA001,FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorB,
 FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorB001],180.0,FreeCAD.Vector(0.0,0.0,0.0),axis=FreeCAD.Vector(0.0,0.0,1.0),copy=True)
 
+# add Bearing Holders
+Part.insert(os.path.join(path,"Bearing_Holder.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("Bearing_Holder").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").Bearing_Holder.Placement=App.Placement(App.Vector(75,75,82),App.Rotation(0.707107,0,0,0.707107))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(-150,0,0),copy=True)
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").Bearing_Holder002.Placement=App.Placement(App.Vector(75,-75,82),App.Rotation(-4.32964e-17,0.707107,0.707107,4.32964e-17))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,-77),copy=True)
+App.getDocument("TK0_Assembly").Bearing_Holder003.Placement=App.Placement(App.Vector(-75,-75,82),App.Rotation(-4.32964e-17,0.707107,0.707107,4.32964e-17))
+
+# add linear bearings
+Part.insert(os.path.join(path,"LM10UU_LinearBearing.stp"),"TK0_Assembly")
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing.Placement = App.Placement(App.Vector(75,-58,70),App.Rotation(0,0,0.707107,0.707107))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,116,0),copy=True)
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(-150,0,0),copy=True)
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(-150,116,0),copy=True)
+
 # create Y_Frame_Assy group to serve as sub-assembly and insert parts in the group
 App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","Y_Frame_Assy")
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("HFS5_2020x500mm008"))
@@ -168,6 +185,126 @@ App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocum
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorA003"))
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorB002"))
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_FrameConnectorB003"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder001"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder002"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder003"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing001"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing002"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing003"))
+
+##### CREATE X_ASSY #####
+
+# add X_BearingForSpring
+Part.insert(os.path.join(path,"X_BearingForSpring.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("X_BearingForSpring").ShapeColor = (1.0000,0.0000,0.0000)
+xb = App.getDocument("TK0_Assembly").X_BearingForSpring
+xb.Placement=App.Placement(App.Vector(238,57.50,228.50),App.Rotation(-0.707107,4.32964e-17,0.707107,4.32964e-17))
+
+# add top Bearing_Holder
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").Bearing_Holder004.Placement=App.Placement(App.Vector(238,0,250),App.Rotation(0,0,0.707107,0.707107))
+
+# add bottom Bearing_Holder
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").Bearing_Holder005.Placement=App.Placement(App.Vector(238,0,173),App.Rotation(0,0,0.707107,0.707107))
+
+# add linear bearings
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing004.Placement=App.Placement(App.Vector(250,0,268),App.Rotation(0,0.707107,0,0.707107))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing005.Placement=App.Placement(App.Vector(250,0,191),App.Rotation(0,0.707107,0,0.707107))
+
+# add smooth rods
+Draft.move([FreeCAD.getDocument("TK0_Assembly").smooth_rod_10x500mm],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").smooth_rod_10x500mm004.Placement=App.Placement(App.Vector(-250,40,263.5),App.Rotation(0,0.707107,0,0.707107))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").smooth_rod_10x500mm],FreeCAD.Vector(0,0,0),copy=True)
+App.getDocument("TK0_Assembly").smooth_rod_10x500mm005.Placement=App.Placement(App.Vector(-250,40,193.5),App.Rotation(0,0.707107,0,0.707107))
+
+# copy bearing holders and linear bearings to the left side
+Draft.rotate([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder004,FreeCAD.getDocument("TK0_Assembly").Bearing_Holder005,FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing004,
+FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing005],180.0,FreeCAD.Vector(0.0,0.0,0.0),axis=FreeCAD.Vector(0.0,0.0,1.0),copy=True)
+
+# add X_MotorForSpring
+Part.insert(os.path.join(path,"X_MotorForSpring.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("X_MotorForSpring").ShapeColor = (1.0000,0.0000,0.0000)
+xm = App.getDocument("TK0_Assembly").X_MotorForSpring
+xm.Placement=App.Placement(App.Vector(-238,57.50,228.50),App.Rotation(0.707107,0,0.707107,0))
+
+# add bearing holders for X_Carriage
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,0),copy=True)
+bh1 = App.getDocument("TK0_Assembly").Bearing_Holder008
+bh1.Placement=App.Placement(App.Vector(-50,28,263.50),App.Rotation(0.707107,4.32964e-17,0.707107,4.32964e-17))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,0),copy=True)
+bh2 = App.getDocument("TK0_Assembly").Bearing_Holder009
+bh2.Placement=App.Placement(App.Vector(-50,28,193.50),App.Rotation(0.707107,4.32964e-17,0.707107,4.32964e-17))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,0),copy=True)
+bh3 = App.getDocument("TK0_Assembly").Bearing_Holder010
+bh3.Placement=App.Placement(App.Vector(50,28,263.50),App.Rotation(-0.707107,-4.32964e-17,0.707107,4.32964e-17))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,0),copy=True)
+bh4 = App.getDocument("TK0_Assembly").Bearing_Holder011
+bh4.Placement=App.Placement(App.Vector(50,28,193.50),App.Rotation(-0.707107,-4.32964e-17,0.707107,4.32964e-17))
+
+# add linear bearings
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,-77),copy=True)
+lb2 = App.getDocument("TK0_Assembly").LM10UU_LinearBearing008
+lb2.Placement=App.Placement(App.Vector(33,40,263.5),App.Rotation(0,0,0,1))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,-77),copy=True)
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing009.Placement=App.Placement(App.Vector(33,40,193.5),App.Rotation(0,0,0,1))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,-77),copy=True)
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing010.Placement=App.Placement(App.Vector(-33,40,263.5),App.Rotation(0,0,0,1))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,0,-77),copy=True)
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing011.Placement=App.Placement(App.Vector(-33,40,193.5),App.Rotation(0,0,0,1))
+
+# add NEMA-17 stepper motor
+Draft.move([FreeCAD.getDocument("TK0_Assembly").NEMA_17_StepperMotor],FreeCAD.Vector(-220.132,0,4),copy=True)
+App.getDocument("TK0_Assembly").NEMA_17_StepperMotor003.Placement=App.Placement(App.Vector(-216,104.5,228.5),App.Rotation(0.707107,0,0,0.707107))
+
+# add X_Carriage
+Part.insert(os.path.join(path,"X_Carriage.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("X_Carriage").ShapeColor = (1.0000,0.0000,0.0000)
+xc = App.getDocument("TK0_Assembly").X_Carriage
+xc.Placement=App.Placement(App.Vector(0,22,230.75),App.Rotation(-0.5,-0.5,-0.5,0.5))
+
+# add X_SingleExtruderMount
+Part.insert(os.path.join(path,"X_SingleExtruderMount.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("X_SingleExtruderMount").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").X_SingleExtruderMount.Placement=App.Placement(App.Vector(0,22,278.52),App.Rotation(4.32964e-17,-0.707107,0.707107,4.32964e-17))
+
+# add X_Carriage_QuickGuide
+Part.insert(os.path.join(path,"X_Carriage_QuickGuide.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("X_Carriage_QuickGuide").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").X_Carriage_QuickGuide.Placement=App.Placement(App.Vector(50,16,172.50),App.Rotation(4.32964e-17,0.707107,0.707107,4.32964e-17))
+
+
+# create X_Assy group to serve as sub-assembly and insert parts in the group
+App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","X_Assy")
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_BearingForSpring"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder004"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder005"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing004"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing005"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("smooth_rod_10x500mm004"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("smooth_rod_10x500mm005"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder006"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder007"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing006"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing007"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_MotorForSpring"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_Carriage"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder008"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder009"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder010"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Bearing_Holder011"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing008"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing009"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing010"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing011"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor003"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_SingleExtruderMount"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_Carriage_QuickGuide"))
+
 
 ##### FINISHING UP #####
 # recompute, set view
