@@ -87,6 +87,11 @@ Part.insert(os.path.join(path,"NEMA-17_StepperMotor.stp"),"TK0_Assembly")
 Draft.move([FreeCAD.getDocument("TK0_Assembly").NEMA_17_StepperMotor],FreeCAD.Vector(-220.132,0,4),copy=True)
 App.getDocument("TK0_Assembly").NEMA_17_StepperMotor.Placement=App.Placement(App.Vector(220.132,0,4),App.Rotation(0,0,0,1))
 
+# add NamePlate
+Part.insert(os.path.join(path,"NamePlate.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("NamePlate").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").NamePlate.Placement=App.Placement(App.Vector(0,-85.1,460),App.Rotation(0.707107,0,0,0.707107))
+
 # create Z_Frame_Assy group to serve as sub-assembly and insert parts in the group
 App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","Z_Frame_Assy")
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("HFS5_2020x500mm"))
@@ -113,7 +118,7 @@ App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocum
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("smooth_rod_10x500mm001"))
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor"))
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor001"))
-
+App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NamePlate"))
 
 
 # recompute, set view
@@ -179,19 +184,23 @@ FreeCAD.getDocument("TK0_Assembly").Y_FrameConnectorB001],180.0,FreeCAD.Vector(0
 # add Bearing Holders
 Part.insert(os.path.join(path,"Bearing_Holder.stp"),"TK0_Assembly")
 FreeCADGui.getDocument("TK0_Assembly").getObject("Bearing_Holder").ShapeColor = (1.0000,0.0000,0.0000)
-App.getDocument("TK0_Assembly").Bearing_Holder.Placement=App.Placement(App.Vector(75,75,82),App.Rotation(0.707107,0,0,0.707107))
+App.getDocument("TK0_Assembly").Bearing_Holder.Placement=App.Placement(App.Vector(75,68.5,82),App.Rotation(0.707107,0,0,0.707107))
 Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(-150,0,0),copy=True)
 Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,0),copy=True)
-App.getDocument("TK0_Assembly").Bearing_Holder002.Placement=App.Placement(App.Vector(75,-75,82),App.Rotation(-4.32964e-17,0.707107,0.707107,4.32964e-17))
+App.getDocument("TK0_Assembly").Bearing_Holder002.Placement=App.Placement(App.Vector(75,-68.5,82),App.Rotation(-4.32964e-17,0.707107,0.707107,4.32964e-17))
 Draft.move([FreeCAD.getDocument("TK0_Assembly").Bearing_Holder],FreeCAD.Vector(0,0,-77),copy=True)
-App.getDocument("TK0_Assembly").Bearing_Holder003.Placement=App.Placement(App.Vector(-75,-75,82),App.Rotation(-4.32964e-17,0.707107,0.707107,4.32964e-17))
+App.getDocument("TK0_Assembly").Bearing_Holder003.Placement=App.Placement(App.Vector(-75,-68.5,82),App.Rotation(-4.32964e-17,0.707107,0.707107,4.32964e-17))
 
 # add linear bearings
 Part.insert(os.path.join(path,"LM10UU_LinearBearing.stp"),"TK0_Assembly")
-App.getDocument("TK0_Assembly").LM10UU_LinearBearing.Placement = App.Placement(App.Vector(75,-58.5,70),App.Rotation(0,0,0.707107,0.707107))
-Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,117,0),copy=True)
+App.getDocument("TK0_Assembly").LM10UU_LinearBearing.Placement = App.Placement(App.Vector(75,-52,70),App.Rotation(0,0,0.707107,0.707107))
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(0,104,0),copy=True)
 Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(-150,0,0),copy=True)
-Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(-150,117,0),copy=True)
+Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Vector(-150,104,0),copy=True)
+
+# add Y_Bed
+Part.insert(os.path.join(path,"Y_Bed.stp"),"TK0_Assembly")
+App.getDocument("TK0_Assembly").Y_Bed.Placement = App.Placement(App.Vector(0,0,82),App.Rotation(0,0,0,1))
 
 # create Y_Frame_Assy group to serve as sub-assembly and insert parts in the group
 App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","Y_Frame_Assy")
@@ -218,6 +227,7 @@ App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocum
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing001"))
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing002"))
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing003"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_Bed"))
 
 # recompute, set view
 App.activeDocument().recompute()
@@ -311,7 +321,6 @@ Part.insert(os.path.join(path,"X_Carriage_QuickGuide.stp"),"TK0_Assembly")
 FreeCADGui.getDocument("TK0_Assembly").getObject("X_Carriage_QuickGuide").ShapeColor = (1.0000,0.0000,0.0000)
 App.getDocument("TK0_Assembly").X_Carriage_QuickGuide.Placement=App.Placement(App.Vector(50,16,172.50),App.Rotation(4.32964e-17,0.707107,0.707107,4.32964e-17))
 
-
 # create X_Assy group to serve as sub-assembly and insert parts in the group
 App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","X_Assy")
 App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_BearingForSpring"))
@@ -339,6 +348,64 @@ App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("T
 App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_SingleExtruderMount"))
 App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_Carriage_QuickGuide"))
 
+
+# recompute, set view
+App.activeDocument().recompute()
+on=Gui.activeDocument().activeView().isAnimationEnabled()
+Gui.activeDocument().activeView().setAnimationEnabled(False)
+Gui.activeDocument().activeView().setCameraType("Perspective")
+Gui.activeDocument().activeView().viewAxometric()
+Gui.activeDocument().activeView().fitAll()
+Gui.activeDocument().activeView().setAnimationEnabled(on)
+
+
+
+##### CREATE ELECTRONIC ENCLOSURE #####
+
+# add ElectronicEnclosureBottom
+Part.insert(os.path.join(path,"ElectronicEnclosureBottom.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("ElectronicEnclosureBottom").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").ElectronicEnclosureBottom.Placement=App.Placement(App.Vector(-270,0,100),App.Rotation(0.5,-0.5,-0.5,0.5))
+
+# add ElectronicEnclosureStrainRelief
+Part.insert(os.path.join(path,"ElectronicEnclosureStrainRelief.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("ElectronicEnclosureStrainRelief").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").ElectronicEnclosureStrainRelief.Placement=App.Placement(App.Vector(-280.5,0,49.7),App.Rotation(0.707107,-0.707107,4.32964e-17,4.32964e-17))
+
+# add ElectronicEnclosureSDSlotSide
+Part.insert(os.path.join(path,"ElectronicEnclosureSDSlotSide.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("ElectronicEnclosureSDSlotSide").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").ElectronicEnclosureSDSlotSide.Placement=App.Placement(App.Vector(-292.5,-85,100),App.Rotation(-0.5,0.5,0.5,0.5))
+
+# add ElectronicEnclosurePowerCordSide
+Part.insert(os.path.join(path,"ElectronicEnclosurePowerCordSide.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("ElectronicEnclosurePowerCordSide").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").ElectronicEnclosurePowerCordSide.Placement=App.Placement(App.Vector(-292.5,85,100),App.Rotation(0.5,-0.5,0.5,0.5))
+
+# add ElectronicEnclosureStrainReliefSide
+Part.insert(os.path.join(path,"ElectronicEnclosureStrainReliefSide.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("ElectronicEnclosureStrainReliefSide").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").ElectronicEnclosureStrainReliefSide.Placement=App.Placement(App.Vector(-292.5,0,27.5),App.Rotation(0,0,-0.707107,0.707107))
+
+# add ElectronicEnclosureSwitchSide
+Part.insert(os.path.join(path,"ElectronicEnclosureSwitchSide.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("ElectronicEnclosureSwitchSide").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").ElectronicEnclosureSwitchSide.Placement=App.Placement(App.Vector(-292.5,0,172.5),App.Rotation(-0.707107,-0.707107,4.32964e-17,-4.32964e-17))
+
+# add ElectronicEnclosureTop
+Part.insert(os.path.join(path,"ElectronicEnclosureTop.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("ElectronicEnclosureTop").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").ElectronicEnclosureTop.Placement=App.Placement(App.Vector(-310,0,100),App.Rotation(-0.5,0.5,0.5,-0.5))
+
+# create ElectronicEnclosure group to serve as sub-assembly and insert parts in the group
+App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","ElectronicEnclosure")
+App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureBottom"))
+App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureStrainRelief"))
+App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureSDSlotSide"))
+App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosurePowerCordSide"))
+App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureStrainReliefSide"))
+App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureSwitchSide"))
+App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureTop"))
 
 ##### FINISHING UP #####
 # recompute, set view
