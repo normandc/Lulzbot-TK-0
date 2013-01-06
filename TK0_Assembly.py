@@ -87,6 +87,11 @@ Part.insert(os.path.join(path,"NEMA-17_StepperMotor.stp"),"TK0_Assembly")
 Draft.move([FreeCAD.getDocument("TK0_Assembly").NEMA_17_StepperMotor],FreeCAD.Vector(-220.132,0,4),copy=True)
 App.getDocument("TK0_Assembly").NEMA_17_StepperMotor.Placement=App.Placement(App.Vector(220.132,0,4),App.Rotation(0,0,0,1))
 
+# add threaded rods
+Part.insert(os.path.join(path,"threaded_rod_0375-12_365mm.stp"),"TK0_Assembly")
+Draft.move([FreeCAD.getDocument("TK0_Assembly").threaded_rod_0375_12_365mm],FreeCAD.Vector(-220,0,77),copy=True)
+App.getDocument("TK0_Assembly").threaded_rod_0375_12_365mm.Placement=App.Placement(App.Vector(220,0,77),App.Rotation(0,0,0,1))
+
 # add NamePlate
 Part.insert(os.path.join(path,"NamePlate.stp"),"TK0_Assembly")
 FreeCADGui.getDocument("TK0_Assembly").getObject("NamePlate").ShapeColor = (1.0000,0.0000,0.0000)
@@ -119,6 +124,8 @@ App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocum
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor"))
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor001"))
 App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NamePlate"))
+App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("threaded_rod_0375_12_365mm"))
+App.getDocument("TK0_Assembly").getObject("Z_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("threaded_rod_0375_12_365mm001"))
 
 
 # recompute, set view
@@ -200,7 +207,12 @@ Draft.move([FreeCAD.getDocument("TK0_Assembly").LM10UU_LinearBearing],FreeCAD.Ve
 
 # add Y_Bed
 Part.insert(os.path.join(path,"Y_Bed.stp"),"TK0_Assembly")
-App.getDocument("TK0_Assembly").Y_Bed.Placement = App.Placement(App.Vector(0,0,82),App.Rotation(0,0,0,1))
+App.getDocument("TK0_Assembly").Y_Bed.Placement = App.Placement(App.Vector(0,0,85.17),App.Rotation(1,0,0,6.12303e-17))
+
+# add Y_BeltMount
+Part.insert(os.path.join(path,"Y_BeltMount.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("Y_BeltMount").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").Y_BeltMount.Placement = App.Placement(App.Vector(7,0,82),App.Rotation(0.707107,-0.707107,-0,0))
 
 # create Y_Frame_Assy group to serve as sub-assembly and insert parts in the group
 App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","Y_Frame_Assy")
@@ -228,6 +240,7 @@ App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocum
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing002"))
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("LM10UU_LinearBearing003"))
 App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_Bed"))
+App.getDocument("TK0_Assembly").getObject("Y_Frame_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Y_BeltMount"))
 
 # recompute, set view
 App.activeDocument().recompute()
@@ -321,6 +334,12 @@ Part.insert(os.path.join(path,"X_Carriage_QuickGuide.stp"),"TK0_Assembly")
 FreeCADGui.getDocument("TK0_Assembly").getObject("X_Carriage_QuickGuide").ShapeColor = (1.0000,0.0000,0.0000)
 App.getDocument("TK0_Assembly").X_Carriage_QuickGuide.Placement=App.Placement(App.Vector(50,16,172.50),App.Rotation(4.32964e-17,0.707107,0.707107,4.32964e-17))
 
+# add Z NutSprings
+Part.insert(os.path.join(path,"Z_NutSpring.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("Z_NutSpring").ShapeColor = (1.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").Z_NutSpring.Placement=App.Placement(App.Vector(220,0,210.50),App.Rotation(0,0,0.707107,0.707107))
+Draft.rotate([FreeCAD.getDocument("TK0_Assembly").Z_NutSpring],180.0,FreeCAD.Vector(0.0,0.0,0.0),axis=FreeCAD.Vector(0.0,0.0,1.0),copy=True)
+
 # create X_Assy group to serve as sub-assembly and insert parts in the group
 App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","X_Assy")
 App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_BearingForSpring"))
@@ -347,7 +366,8 @@ App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("T
 App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("NEMA_17_StepperMotor003"))
 App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_SingleExtruderMount"))
 App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("X_Carriage_QuickGuide"))
-
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Z_NutSpring"))
+App.getDocument("TK0_Assembly").getObject("X_Assy").addObject(App.getDocument("TK0_Assembly").getObject("Z_NutSpring001"))
 
 # recompute, set view
 App.activeDocument().recompute()
