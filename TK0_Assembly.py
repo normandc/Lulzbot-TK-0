@@ -378,8 +378,6 @@ Gui.activeDocument().activeView().viewAxometric()
 Gui.activeDocument().activeView().fitAll()
 Gui.activeDocument().activeView().setAnimationEnabled(on)
 
-
-
 ##### CREATE ELECTRONIC ENCLOSURE #####
 
 # add ElectronicEnclosureBottom
@@ -417,6 +415,11 @@ Part.insert(os.path.join(path,"ElectronicEnclosureTop.stp"),"TK0_Assembly")
 FreeCADGui.getDocument("TK0_Assembly").getObject("ElectronicEnclosureTop").ShapeColor = (1.0000,0.0000,0.0000)
 App.getDocument("TK0_Assembly").ElectronicEnclosureTop.Placement=App.Placement(App.Vector(-310,0,100),App.Rotation(-0.5,0.5,0.5,-0.5))
 
+# add rocker_switch
+Part.insert(os.path.join(path,"rocker_switch.stp"),"TK0_Assembly")
+FreeCADGui.getDocument("TK0_Assembly").getObject("rocker_switch").ShapeColor = (0.0000,0.0000,0.0000)
+App.getDocument("TK0_Assembly").rocker_switch.Placement=App.Placement(App.Vector(-292.5,-56.5,172.5),App.Rotation(0,0,0,1))
+
 # create ElectronicEnclosure group to serve as sub-assembly and insert parts in the group
 App.getDocument("TK0_Assembly").addObject("App::DocumentObjectGroup","ElectronicEnclosure")
 App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureBottom"))
@@ -426,6 +429,7 @@ App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.g
 App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureStrainReliefSide"))
 App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureSwitchSide"))
 App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("ElectronicEnclosureTop"))
+App.getDocument("TK0_Assembly").getObject("ElectronicEnclosure").addObject(App.getDocument("TK0_Assembly").getObject("rocker_switch"))
 
 ##### FINISHING UP #####
 # recompute, set view
