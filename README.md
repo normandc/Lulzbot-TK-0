@@ -1,5 +1,9 @@
 Lulzbot-TK-0
 ============
+
+***WARNING
+This repository is now deprecated. For the most up-to-date files, please check out the TAZ source files at http://download.lulzbot.com/TAZ/ 
+
 This repository hosts 3D CAD model files (parts and assembly) for the upcoming [Lulzbot TK-0 RepRap 3D printer](http://devel.lulzbot.com/TK-0/). The parts are remodeled from the original Sketchup files in [FreeCAD](http://free-cad.sourceforge.net/), an open source 3D CAD parametric modeler. FreeCAD .fcstd files are provided, as well as [STEP](http://en.wikipedia.org/wiki/ISO_10303), a universal exchange format that can be read by most commercial and open source 3D CAD applications.
 
 As with the original files, design files are under the GPLv3, documentation under CC-BY-SA. The design is not finalized, so these files will keep being updated.
